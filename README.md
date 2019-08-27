@@ -83,3 +83,6 @@ lessToCss({source: '__tests__/basic.less'}).then((result) => {
 ```bash
 $ ./bin/less-to-css-x.js example.less
 ```
+
+![Alt text](images/image1.png?raw=true "Title")
+![Alt text](images/image2.png?raw=true "Title")
