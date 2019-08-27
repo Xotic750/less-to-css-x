@@ -63,6 +63,16 @@ lessToCss({source: '__tests__/basic.less'}).then((result) => {
 ```js
 import lessToCss from 'less-to-css-x';
 
+/**
+ * @typedef {!object} RenderOptions
+ * @property {string} source
+ * @property {string} destination
+ * @property {(string|boolean)} sourceMap
+ * @property {(string|boolean)} minify
+ * @property {boolean} dryRun
+ * @property {boolean} noFix
+ */
+
 // result is a postcss.LazyResult
 
 lessToCss({source: '__tests__/basic.less'}).then((result) => {
