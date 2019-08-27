@@ -28,9 +28,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @param {RenderOptions} options - The render options.
  * @returns {Promise<string>} - The bound function.
  */
-var performLessFixes = function performLessFixes(source, options) {
+const performLessFixes = function performLessFixes(source, options) {
   if (options.noFix) {
-    /* eslint-disable-next-line compat/compat */
     return Promise.resolve(source);
   }
 
@@ -55,7 +54,7 @@ var performLessFixes = function performLessFixes(source, options) {
  */
 
 
-var renderLessToCss = function renderLessToCss(options) {
+const renderLessToCss = function renderLessToCss(options) {
   return function boundRenderLessToCss(lessInput) {
     return _less.default.render(lessInput, options.sourceMap ? {
       sourceMap: {}
@@ -68,9 +67,9 @@ var renderLessToCss = function renderLessToCss(options) {
  */
 
 
-var performPostcss = function performPostcss(options) {
+const performPostcss = function performPostcss(options) {
   return function boundPerformPostcss(result) {
-    var plugins = options.minify ? [_autoprefixer.default, _cssnano.default] : [_autoprefixer.default];
+    const plugins = options.minify ? [_autoprefixer.default, _cssnano.default] : [_autoprefixer.default];
     return (0, _postcss.default)(plugins).process(result.css, {
       from: options.source,
       to: options.destination,
@@ -87,15 +86,14 @@ var performPostcss = function performPostcss(options) {
  */
 
 
-var writeCssAndMap = function writeCssAndMap(options) {
+const writeCssAndMap = function writeCssAndMap(options) {
   return function boundWriteCssAndMap(result) {
-    /* eslint-disable-next-line compat/compat */
     return new Promise(function writeFiles(resolve) {
       if (options.dryRun === false) {
         _fs.default.writeFileSync(options.destination, result.css, 'utf8');
 
         if (options.sourceMap && result.map) {
-          var mapFile = typeof options.sourceMap === 'string' ? options.sourceMap : "".concat(options.destination, ".map");
+          const mapFile = typeof options.sourceMap === 'string' ? options.sourceMap : `${options.destination}.map`;
 
           _fs.default.writeFileSync(mapFile, result.map, 'utf8');
         }
@@ -116,14 +114,14 @@ var writeCssAndMap = function writeCssAndMap(options) {
  */
 
 
-var normalizeOptions = function normalizeOptions(options) {
-  var name = _path.default.basename(options.source, '.less');
+const normalizeOptions = function normalizeOptions(options) {
+  const name = _path.default.basename(options.source, '.less');
 
-  var dirname = _path.default.dirname(options.source);
+  const dirname = _path.default.dirname(options.source);
 
   return {
     source: options.source,
-    destination: options.destination || _path.default.join(dirname, "".concat(name, ".css")),
+    destination: options.destination || _path.default.join(dirname, `${name}.css`),
     sourceMap: options.sourceMap || false,
     minify: options.minify || false,
     dryRun: Boolean(options.dryRun),
@@ -136,10 +134,10 @@ var normalizeOptions = function normalizeOptions(options) {
  */
 
 
-var render = function render(options) {
-  var opts = normalizeOptions(options);
+const render = function render(options) {
+  const opts = normalizeOptions(options);
 
-  var source = _fs.default.readFileSync(opts.source, 'utf8');
+  const source = _fs.default.readFileSync(opts.source, 'utf8');
 
   return performLessFixes(source, opts).then(renderLessToCss(opts)).then(performPostcss(opts)).then(writeCssAndMap(opts));
 };

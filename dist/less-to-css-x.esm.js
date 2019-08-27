@@ -12,9 +12,8 @@ import lessSyntax from 'postcss-less';
  * @returns {Promise<string>} - The bound function.
  */
 
-var performLessFixes = function performLessFixes(source, options) {
+const performLessFixes = function performLessFixes(source, options) {
   if (options.noFix) {
-    /* eslint-disable-next-line compat/compat */
     return Promise.resolve(source);
   }
 
@@ -39,7 +38,7 @@ var performLessFixes = function performLessFixes(source, options) {
  */
 
 
-var renderLessToCss = function renderLessToCss(options) {
+const renderLessToCss = function renderLessToCss(options) {
   return function boundRenderLessToCss(lessInput) {
     return less.render(lessInput, options.sourceMap ? {
       sourceMap: {}
@@ -52,9 +51,9 @@ var renderLessToCss = function renderLessToCss(options) {
  */
 
 
-var performPostcss = function performPostcss(options) {
+const performPostcss = function performPostcss(options) {
   return function boundPerformPostcss(result) {
-    var plugins = options.minify ? [autoprefixer, cssnano] : [autoprefixer];
+    const plugins = options.minify ? [autoprefixer, cssnano] : [autoprefixer];
     return postcss(plugins).process(result.css, {
       from: options.source,
       to: options.destination,
@@ -71,15 +70,14 @@ var performPostcss = function performPostcss(options) {
  */
 
 
-var writeCssAndMap = function writeCssAndMap(options) {
+const writeCssAndMap = function writeCssAndMap(options) {
   return function boundWriteCssAndMap(result) {
-    /* eslint-disable-next-line compat/compat */
     return new Promise(function writeFiles(resolve) {
       if (options.dryRun === false) {
         fs.writeFileSync(options.destination, result.css, 'utf8');
 
         if (options.sourceMap && result.map) {
-          var mapFile = typeof options.sourceMap === 'string' ? options.sourceMap : "".concat(options.destination, ".map");
+          const mapFile = typeof options.sourceMap === 'string' ? options.sourceMap : `${options.destination}.map`;
           fs.writeFileSync(mapFile, result.map, 'utf8');
         }
       }
@@ -99,12 +97,12 @@ var writeCssAndMap = function writeCssAndMap(options) {
  */
 
 
-var normalizeOptions = function normalizeOptions(options) {
-  var name = path.basename(options.source, '.less');
-  var dirname = path.dirname(options.source);
+const normalizeOptions = function normalizeOptions(options) {
+  const name = path.basename(options.source, '.less');
+  const dirname = path.dirname(options.source);
   return {
     source: options.source,
-    destination: options.destination || path.join(dirname, "".concat(name, ".css")),
+    destination: options.destination || path.join(dirname, `${name}.css`),
     sourceMap: options.sourceMap || false,
     minify: options.minify || false,
     dryRun: Boolean(options.dryRun),
@@ -117,9 +115,9 @@ var normalizeOptions = function normalizeOptions(options) {
  */
 
 
-var render = function render(options) {
-  var opts = normalizeOptions(options);
-  var source = fs.readFileSync(opts.source, 'utf8');
+const render = function render(options) {
+  const opts = normalizeOptions(options);
+  const source = fs.readFileSync(opts.source, 'utf8');
   return performLessFixes(source, opts).then(renderLessToCss(opts)).then(performPostcss(opts)).then(writeCssAndMap(opts));
 };
 

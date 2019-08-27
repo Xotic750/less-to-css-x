@@ -14,15 +14,11 @@ import lessSyntax from 'postcss-less';
  */
 const performLessFixes = function performLessFixes(source, options) {
   if (options.noFix) {
-    /* eslint-disable-next-line compat/compat */
     return Promise.resolve(source);
   }
 
   return postcss([stylelint({fix: true}), autoprefixer({overrideBrowserslist: []})])
-    .process(source, {
-      from: options.source,
-      syntax: lessSyntax,
-    })
+    .process(source, {from: options.source, syntax: lessSyntax})
     .then(function writeFixes(result) {
       if (options.dryRun === false) {
         fs.writeFileSync(options.source, result.content);
@@ -65,7 +61,6 @@ const performPostcss = function performPostcss(options) {
  */
 const writeCssAndMap = function writeCssAndMap(options) {
   return function boundWriteCssAndMap(result) {
-    /* eslint-disable-next-line compat/compat */
     return new Promise(function writeFiles(resolve) {
       if (options.dryRun === false) {
         fs.writeFileSync(options.destination, result.css, 'utf8');
