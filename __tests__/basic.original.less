@@ -1,0 +1,61 @@
+.add-bg-size(@size) {
+  -webkit-background-size+: @size;
+  background-size+: @size;
+}
+
+@default-size: 20px;
+
+.box {
+  .add-bg-size(@default-size (@default-size / 2));
+  .add-bg-size(cover);
+  width: calc(100% - 50px);
+  border: 0px;
+}
+
+.example {
+  display: -ms-grid;
+  display: grid;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+  background: -o-linear-gradient(top, white, black);
+  background: linear-gradient(to bottom, white, black);
+
+  .hack {
+    min-height: 48px;
+  }
+  @media all and (-ms-high-contrast: none) {
+    *::-ms-backdrop,
+    .hack {
+      min-height: 48px !important;
+    } /* IE11 */
+  }
+  .foo {
+    font-size: 1.5em;
+  }
+}
+
+input {
+  &&::-moz-placeholder,
+  &&::placeholder {
+    color: blue;
+    font-size: 1.5em;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+
+
+a[id="foo"] {
+  color: red;
+}
+
+@-webkit-keyframes slideIn { 0% { top: 0; } }
+@keyframes slideIn { 0% {top: 0;} }

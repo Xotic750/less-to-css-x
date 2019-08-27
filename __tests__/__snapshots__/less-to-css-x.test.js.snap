@@ -1,0 +1,556 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lessToCss it should autofix 1`] = `
+".add-bg-size(@size) {
+  -webkit-background-size+: @size;
+  background-size+: @size;
+}
+
+@default-size: 20px;
+
+.box {
+  .add-bg-size(@default-size (@default-size / 2));
+  .add-bg-size(cover);
+
+  width: calc(100% - 50px);
+  border: 0;
+}
+
+.example {
+  display: grid;
+  transition: all 0.5s;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+
+  .hack {
+    min-height: 48px;
+  }
+  @media all and (-ms-high-contrast: none) {
+    *::-ms-backdrop,
+    .hack {
+      min-height: 48px !important;
+    } /* IE11 */
+  }
+  .foo {
+    font-size: 1.5em;
+  }
+}
+
+input {
+  &&::-moz-placeholder,
+  &&::placeholder {
+    color: blue;
+    font-size: 1.5em;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+
+a[id='foo'] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+"
+`;
+
+exports[`lessToCss it should create a source map 1`] = `
+".box {
+  background-size: 20px 10px, cover;
+  width: calc(100% - 50px);
+  border: 0;
+}
+.example {
+  display: grid;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+.example .hack {
+  min-height: 48px;
+}
+@media all and (-ms-high-contrast: none) {
+  .example {
+    /* IE11 */
+  }
+  .example *::-ms-backdrop,
+  .example .hack {
+    min-height: 48px !important;
+  }
+}
+.example .foo {
+  font-size: 1.5em;
+}
+inputinput::-moz-placeholder,
+inputinput::placeholder {
+  color: blue;
+  font-size: 1.5em;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+a[id='foo'] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+
+/*# sourceMappingURL=basic.css.map */"
+`;
+
+exports[`lessToCss it should create a source map 2`] = `
+Object {
+  "file": "basic.css",
+  "mappings": "AAAA;EAEE,iCAAiC;EACjC,wBAAwB;EACxB,SAAS;AACX;AACA;EACE,aAAa;EACb,oBAAoB;EACpB,yBAAiB;KAAjB,sBAAiB;MAAjB,qBAAiB;UAAjB,iBAAiB;EACjB,oDAAoD;AACtD;AACA;EACE,gBAAgB;AAClB;AACA;EACE;IACE,SAAS;EACX;EACA;;IAEE,2BAA2B;EAC7B;AACF;AACA;EACE,gBAAgB;AAClB;AACA;;EAEE,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,UAAU;AACZ;AACA;EACE;IACE,MAAM;EACR;AACF",
+  "names": Array [],
+  "sources": Array [
+    "basic.less",
+  ],
+  "sourcesContent": Array [
+    ".box {
+  -webkit-background-size: 20px 10px, cover;
+  background-size: 20px 10px, cover;
+  width: calc(100% - 50px);
+  border: 0;
+}
+.example {
+  display: grid;
+  transition: all 0.5s;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+.example .hack {
+  min-height: 48px;
+}
+@media all and (-ms-high-contrast: none) {
+  .example {
+    /* IE11 */
+  }
+  .example *::-ms-backdrop,
+  .example .hack {
+    min-height: 48px !important;
+  }
+}
+.example .foo {
+  font-size: 1.5em;
+}
+inputinput::-moz-placeholder,
+inputinput::placeholder {
+  color: blue;
+  font-size: 1.5em;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+a[id='foo'] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+",
+  ],
+  "version": 3,
+}
+`;
+
+exports[`lessToCss it should minify 1`] = `
+".box{background-size:20px 10px,cover;width:calc(100% - 50px);border:0}.example{display:grid;transition:all .5s;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:linear-gradient(180deg,#fff,#000)}.example .hack{min-height:48px}@media (-ms-high-contrast:none){.example .hack,.example ::-ms-backdrop{min-height:48px!important}}.example .foo{font-size:1.5em}inputinput::-moz-placeholder,inputinput::placeholder{color:#00f;font-size:1.5em}@media (-webkit-min-device-pixel-ratio:2){background:#fff}a[id=foo]{color:red}@keyframes slideIn{0%{top:0}}
+/*# sourceMappingURL=basic.css.map */"
+`;
+
+exports[`lessToCss it should minify 2`] = `
+Object {
+  "file": "basic.css",
+  "mappings": "AAAA,KAEE,+BAAiC,CACjC,uBAAwB,CACxB,QACF,CACA,SACE,YAAa,CACb,kBAAoB,CACpB,wBAAiB,CAAjB,qBAAiB,CAAjB,oBAAiB,CAAjB,gBAAiB,CACjB,4CACF,CACA,eACE,eACF,CACA,gCAIE,uCAEE,yBACF,CACF,CACA,cACE,eACF,CACA,qDAEE,UAAW,CACX,eACF,CACA,0CACE,eACF,CACA,UACE,SACF,CACA,mBACE,GACE,KACF,CACF",
+  "names": Array [],
+  "sources": Array [
+    "basic.less",
+  ],
+  "sourcesContent": Array [
+    ".box {
+  -webkit-background-size: 20px 10px, cover;
+  background-size: 20px 10px, cover;
+  width: calc(100% - 50px);
+  border: 0;
+}
+.example {
+  display: grid;
+  transition: all 0.5s;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+.example .hack {
+  min-height: 48px;
+}
+@media all and (-ms-high-contrast: none) {
+  .example {
+    /* IE11 */
+  }
+  .example *::-ms-backdrop,
+  .example .hack {
+    min-height: 48px !important;
+  }
+}
+.example .foo {
+  font-size: 1.5em;
+}
+inputinput::-moz-placeholder,
+inputinput::placeholder {
+  color: blue;
+  font-size: 1.5em;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+a[id='foo'] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+",
+  ],
+  "version": 3,
+}
+`;
+
+exports[`lessToCss it should not autofix 1`] = `
+".add-bg-size(@size) {
+  -webkit-background-size+: @size;
+  background-size+: @size;
+}
+
+@default-size: 20px;
+
+.box {
+  .add-bg-size(@default-size (@default-size / 2));
+  .add-bg-size(cover);
+  width: calc(100% - 50px);
+  border: 0px;
+}
+
+.example {
+  display: -ms-grid;
+  display: grid;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+  background: -o-linear-gradient(top, white, black);
+  background: linear-gradient(to bottom, white, black);
+
+  .hack {
+    min-height: 48px;
+  }
+  @media all and (-ms-high-contrast: none) {
+    *::-ms-backdrop,
+    .hack {
+      min-height: 48px !important;
+    } /* IE11 */
+  }
+  .foo {
+    font-size: 1.5em;
+  }
+}
+
+input {
+  &&::-moz-placeholder,
+  &&::placeholder {
+    color: blue;
+    font-size: 1.5em;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+
+
+a[id=\\"foo\\"] {
+  color: red;
+}
+
+@-webkit-keyframes slideIn { 0% { top: 0; } }
+@keyframes slideIn { 0% {top: 0;} }
+"
+`;
+
+exports[`lessToCss it should write a custom css and custom map file 1`] = `
+".box {
+  background-size: 20px 10px, cover;
+  width: calc(100% - 50px);
+  border: 0px;
+}
+.example {
+  display: -ms-grid;
+  display: grid;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+.example .hack {
+  min-height: 48px;
+}
+@media all and (-ms-high-contrast: none) {
+  .example {
+    /* IE11 */
+  }
+  .example *::-ms-backdrop,
+  .example .hack {
+    min-height: 48px !important;
+  }
+}
+.example .foo {
+  font-size: 1.5em;
+}
+inputinput::-moz-placeholder,
+inputinput::placeholder {
+  color: blue;
+  font-size: 1.5em;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+a[id=\\"foo\\"] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+
+/*# sourceMappingURL=basic1.css.map */"
+`;
+
+exports[`lessToCss it should write a custom css and custom map file 2`] = `"{\\"version\\":3,\\"sources\\":[\\"basic.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EAEE,iCAAiC;EACjC,wBAAwB;EACxB,WAAW;AACb;AACA;EACE,iBAAiB;EACjB,aAAa;EAGb,oBAAoB;EACpB,yBAAyB;EACzB,sBAAsB;EACtB,qBAAqB;EACrB,iBAAiB;EAGjB,oDAAoD;AACtD;AACA;EACE,gBAAgB;AAClB;AACA;EACE;IACE,SAAS;EACX;EACA;;IAEE,2BAA2B;EAC7B;AACF;AACA;EACE,gBAAgB;AAClB;AACA;;EAEE,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,UAAU;AACZ;AAMA;EACE;IACE,MAAM;EACR;AACF\\",\\"file\\":\\"basic1.css\\",\\"sourcesContent\\":[\\".box {\\\\n  -webkit-background-size: 20px 10px, cover;\\\\n  background-size: 20px 10px, cover;\\\\n  width: calc(100% - 50px);\\\\n  border: 0px;\\\\n}\\\\n.example {\\\\n  display: -ms-grid;\\\\n  display: grid;\\\\n  -webkit-transition: all 0.5s;\\\\n  -o-transition: all 0.5s;\\\\n  transition: all 0.5s;\\\\n  -webkit-user-select: none;\\\\n  -moz-user-select: none;\\\\n  -ms-user-select: none;\\\\n  user-select: none;\\\\n  background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));\\\\n  background: -o-linear-gradient(top, white, black);\\\\n  background: linear-gradient(to bottom, white, black);\\\\n}\\\\n.example .hack {\\\\n  min-height: 48px;\\\\n}\\\\n@media all and (-ms-high-contrast: none) {\\\\n  .example {\\\\n    /* IE11 */\\\\n  }\\\\n  .example *::-ms-backdrop,\\\\n  .example .hack {\\\\n    min-height: 48px !important;\\\\n  }\\\\n}\\\\n.example .foo {\\\\n  font-size: 1.5em;\\\\n}\\\\ninputinput::-moz-placeholder,\\\\ninputinput::placeholder {\\\\n  color: blue;\\\\n  font-size: 1.5em;\\\\n}\\\\n@media (-webkit-min-device-pixel-ratio: 2) {\\\\n  background: white;\\\\n}\\\\na[id=\\\\\\"foo\\\\\\"] {\\\\n  color: red;\\\\n}\\\\n@-webkit-keyframes slideIn {\\\\n  0% {\\\\n    top: 0;\\\\n  }\\\\n}\\\\n@keyframes slideIn {\\\\n  0% {\\\\n    top: 0;\\\\n  }\\\\n}\\\\n\\"]}"`;
+
+exports[`lessToCss it should write a custom css and map file 1`] = `
+".box {
+  background-size: 20px 10px, cover;
+  width: calc(100% - 50px);
+  border: 0px;
+}
+.example {
+  display: -ms-grid;
+  display: grid;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+.example .hack {
+  min-height: 48px;
+}
+@media all and (-ms-high-contrast: none) {
+  .example {
+    /* IE11 */
+  }
+  .example *::-ms-backdrop,
+  .example .hack {
+    min-height: 48px !important;
+  }
+}
+.example .foo {
+  font-size: 1.5em;
+}
+inputinput::-moz-placeholder,
+inputinput::placeholder {
+  color: blue;
+  font-size: 1.5em;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+a[id=\\"foo\\"] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+
+/*# sourceMappingURL=basic1.css.map */"
+`;
+
+exports[`lessToCss it should write a custom css and map file 2`] = `"{\\"version\\":3,\\"sources\\":[\\"basic.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EAEE,iCAAiC;EACjC,wBAAwB;EACxB,WAAW;AACb;AACA;EACE,iBAAiB;EACjB,aAAa;EAGb,oBAAoB;EACpB,yBAAyB;EACzB,sBAAsB;EACtB,qBAAqB;EACrB,iBAAiB;EAGjB,oDAAoD;AACtD;AACA;EACE,gBAAgB;AAClB;AACA;EACE;IACE,SAAS;EACX;EACA;;IAEE,2BAA2B;EAC7B;AACF;AACA;EACE,gBAAgB;AAClB;AACA;;EAEE,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,UAAU;AACZ;AAMA;EACE;IACE,MAAM;EACR;AACF\\",\\"file\\":\\"basic1.css\\",\\"sourcesContent\\":[\\".box {\\\\n  -webkit-background-size: 20px 10px, cover;\\\\n  background-size: 20px 10px, cover;\\\\n  width: calc(100% - 50px);\\\\n  border: 0px;\\\\n}\\\\n.example {\\\\n  display: -ms-grid;\\\\n  display: grid;\\\\n  -webkit-transition: all 0.5s;\\\\n  -o-transition: all 0.5s;\\\\n  transition: all 0.5s;\\\\n  -webkit-user-select: none;\\\\n  -moz-user-select: none;\\\\n  -ms-user-select: none;\\\\n  user-select: none;\\\\n  background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));\\\\n  background: -o-linear-gradient(top, white, black);\\\\n  background: linear-gradient(to bottom, white, black);\\\\n}\\\\n.example .hack {\\\\n  min-height: 48px;\\\\n}\\\\n@media all and (-ms-high-contrast: none) {\\\\n  .example {\\\\n    /* IE11 */\\\\n  }\\\\n  .example *::-ms-backdrop,\\\\n  .example .hack {\\\\n    min-height: 48px !important;\\\\n  }\\\\n}\\\\n.example .foo {\\\\n  font-size: 1.5em;\\\\n}\\\\ninputinput::-moz-placeholder,\\\\ninputinput::placeholder {\\\\n  color: blue;\\\\n  font-size: 1.5em;\\\\n}\\\\n@media (-webkit-min-device-pixel-ratio: 2) {\\\\n  background: white;\\\\n}\\\\na[id=\\\\\\"foo\\\\\\"] {\\\\n  color: red;\\\\n}\\\\n@-webkit-keyframes slideIn {\\\\n  0% {\\\\n    top: 0;\\\\n  }\\\\n}\\\\n@keyframes slideIn {\\\\n  0% {\\\\n    top: 0;\\\\n  }\\\\n}\\\\n\\"]}"`;
+
+exports[`lessToCss it should write css and map file 1`] = `
+".box {
+  background-size: 20px 10px, cover;
+  width: calc(100% - 50px);
+  border: 0px;
+}
+.example {
+  display: -ms-grid;
+  display: grid;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+.example .hack {
+  min-height: 48px;
+}
+@media all and (-ms-high-contrast: none) {
+  .example {
+    /* IE11 */
+  }
+  .example *::-ms-backdrop,
+  .example .hack {
+    min-height: 48px !important;
+  }
+}
+.example .foo {
+  font-size: 1.5em;
+}
+inputinput::-moz-placeholder,
+inputinput::placeholder {
+  color: blue;
+  font-size: 1.5em;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+a[id=\\"foo\\"] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+
+/*# sourceMappingURL=basic.css.map */"
+`;
+
+exports[`lessToCss it should write css and map file 2`] = `"{\\"version\\":3,\\"sources\\":[\\"basic.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EAEE,iCAAiC;EACjC,wBAAwB;EACxB,WAAW;AACb;AACA;EACE,iBAAiB;EACjB,aAAa;EAGb,oBAAoB;EACpB,yBAAyB;EACzB,sBAAsB;EACtB,qBAAqB;EACrB,iBAAiB;EAGjB,oDAAoD;AACtD;AACA;EACE,gBAAgB;AAClB;AACA;EACE;IACE,SAAS;EACX;EACA;;IAEE,2BAA2B;EAC7B;AACF;AACA;EACE,gBAAgB;AAClB;AACA;;EAEE,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,UAAU;AACZ;AAMA;EACE;IACE,MAAM;EACR;AACF\\",\\"file\\":\\"basic.css\\",\\"sourcesContent\\":[\\".box {\\\\n  -webkit-background-size: 20px 10px, cover;\\\\n  background-size: 20px 10px, cover;\\\\n  width: calc(100% - 50px);\\\\n  border: 0px;\\\\n}\\\\n.example {\\\\n  display: -ms-grid;\\\\n  display: grid;\\\\n  -webkit-transition: all 0.5s;\\\\n  -o-transition: all 0.5s;\\\\n  transition: all 0.5s;\\\\n  -webkit-user-select: none;\\\\n  -moz-user-select: none;\\\\n  -ms-user-select: none;\\\\n  user-select: none;\\\\n  background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));\\\\n  background: -o-linear-gradient(top, white, black);\\\\n  background: linear-gradient(to bottom, white, black);\\\\n}\\\\n.example .hack {\\\\n  min-height: 48px;\\\\n}\\\\n@media all and (-ms-high-contrast: none) {\\\\n  .example {\\\\n    /* IE11 */\\\\n  }\\\\n  .example *::-ms-backdrop,\\\\n  .example .hack {\\\\n    min-height: 48px !important;\\\\n  }\\\\n}\\\\n.example .foo {\\\\n  font-size: 1.5em;\\\\n}\\\\ninputinput::-moz-placeholder,\\\\ninputinput::placeholder {\\\\n  color: blue;\\\\n  font-size: 1.5em;\\\\n}\\\\n@media (-webkit-min-device-pixel-ratio: 2) {\\\\n  background: white;\\\\n}\\\\na[id=\\\\\\"foo\\\\\\"] {\\\\n  color: red;\\\\n}\\\\n@-webkit-keyframes slideIn {\\\\n  0% {\\\\n    top: 0;\\\\n  }\\\\n}\\\\n@keyframes slideIn {\\\\n  0% {\\\\n    top: 0;\\\\n  }\\\\n}\\\\n\\"]}"`;
+
+exports[`lessToCss it should write css file 1`] = `
+".box {
+  background-size: 20px 10px, cover;
+  width: calc(100% - 50px);
+  border: 0px;
+}
+.example {
+  display: -ms-grid;
+  display: grid;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+.example .hack {
+  min-height: 48px;
+}
+@media all and (-ms-high-contrast: none) {
+  .example {
+    /* IE11 */
+  }
+  .example *::-ms-backdrop,
+  .example .hack {
+    min-height: 48px !important;
+  }
+}
+.example .foo {
+  font-size: 1.5em;
+}
+inputinput::-moz-placeholder,
+inputinput::placeholder {
+  color: blue;
+  font-size: 1.5em;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+a[id=\\"foo\\"] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+"
+`;
+
+exports[`lessToCss it work with basic less 1`] = `
+".box {
+  background-size: 20px 10px, cover;
+  width: calc(100% - 50px);
+  border: 0;
+}
+.example {
+  display: grid;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+.example .hack {
+  min-height: 48px;
+}
+@media all and (-ms-high-contrast: none) {
+  .example {
+    /* IE11 */
+  }
+  .example *::-ms-backdrop,
+  .example .hack {
+    min-height: 48px !important;
+  }
+}
+.example .foo {
+  font-size: 1.5em;
+}
+inputinput::-moz-placeholder,
+inputinput::placeholder {
+  color: blue;
+  font-size: 1.5em;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+a[id='foo'] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
+"
+`;
+
+exports[`lessToCss it work with basic less 2`] = `undefined`;

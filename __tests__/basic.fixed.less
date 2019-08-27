@@ -1,0 +1,55 @@
+.add-bg-size(@size) {
+  -webkit-background-size+: @size;
+  background-size+: @size;
+}
+
+@default-size: 20px;
+
+.box {
+  .add-bg-size(@default-size (@default-size / 2));
+  .add-bg-size(cover);
+
+  width: calc(100% - 50px);
+  border: 0;
+}
+
+.example {
+  display: grid;
+  transition: all 0.5s;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+
+  .hack {
+    min-height: 48px;
+  }
+  @media all and (-ms-high-contrast: none) {
+    *::-ms-backdrop,
+    .hack {
+      min-height: 48px !important;
+    } /* IE11 */
+  }
+  .foo {
+    font-size: 1.5em;
+  }
+}
+
+input {
+  &&::-moz-placeholder,
+  &&::placeholder {
+    color: blue;
+    font-size: 1.5em;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) {
+  background: white;
+}
+
+a[id='foo'] {
+  color: red;
+}
+@keyframes slideIn {
+  0% {
+    top: 0;
+  }
+}
