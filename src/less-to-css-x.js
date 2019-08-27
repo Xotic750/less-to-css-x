@@ -6,7 +6,6 @@ import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import lessSyntax from 'postcss-less';
-import prettier from 'prettier';
 
 /**
  * @param {string} source - The less source code.

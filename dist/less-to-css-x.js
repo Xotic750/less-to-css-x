@@ -21,8 +21,6 @@ var _cssnano = _interopRequireDefault(require("cssnano"));
 
 var _postcssLess = _interopRequireDefault(require("postcss-less"));
 
-var _prettier = _interopRequireDefault(require("prettier"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
