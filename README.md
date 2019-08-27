@@ -50,15 +50,7 @@ Lint and fix Less then compile to CSS.
 
 **Example**
 
-```js
-import lessToCss from 'less-to-css-x';
-
-// result is a postcss.LazyResult
-
-lessToCss({source: '__tests__/basic.less'}).then((result) => {
-  console.log(result);
-});
-```
+Javascript API
 
 ```js
 import lessToCss from 'less-to-css-x';
@@ -80,9 +72,17 @@ lessToCss({source: '__tests__/basic.less'}).then((result) => {
 });
 ```
 
+**Example**
+
+CLI
+
 ```bash
 $ ./bin/less-to-css-x.js example.less
 ```
+
+**Example**
+
+Webstorm
 
 ![Alt text](images/image1.png?raw=true "Title")
 ![Alt text](images/image2.png?raw=true "Title")
