@@ -91,7 +91,7 @@ const writeCssAndMap = function writeCssAndMap(options) {
  * @property {string} source
  * @property {string} destination
  * @property {(string|boolean)} sourceMap
- * @property {(string|boolean)} minify
+ * @property {boolean} minify
  * @property {boolean} dryRun
  * @property {boolean} noFix
  */
@@ -104,7 +104,7 @@ const normalizeOptions = function normalizeOptions(options) {
     source: options.source,
     destination: options.destination || path.join(dirname, `${name}.css`),
     sourceMap: options.sourceMap || false,
-    minify: options.minify || false,
+    minify: Boolean(options.minify),
     dryRun: Boolean(options.dryRun),
     noFix: Boolean(options.noFix)
   };

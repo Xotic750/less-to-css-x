@@ -56,16 +56,19 @@ Javascript API
 import lessToCss from 'less-to-css-x';
 
 /**
+ * lessToCss options.
+ *
  * @typedef {!object} RenderOptions
  * @property {string} source
- * @property {string} destination
- * @property {(string|boolean)} sourceMap
- * @property {(string|boolean)} minify
- * @property {boolean} dryRun
- * @property {boolean} noFix
+ * @property {string} [destination]
+ * @property {(string|boolean)} [sourceMap=false]
+ * @property {boolean} [minify=false]
+ * @property {boolean} [dryRun=false]
+ * @property {boolean} [noFix=false]
  */
 
-// result is a postcss.LazyResult
+// 'result' is a postcss.LazyResult
+// https://api.postcss.org/LazyResult.html
 
 lessToCss({source: '__tests__/basic.less'}).then((result) => {
   console.log(result);
@@ -77,12 +80,31 @@ lessToCss({source: '__tests__/basic.less'}).then((result) => {
 CLI
 
 ```bash
-$ ./bin/less-to-css-x.js example.less
+$ less-to-css-x.js --help
+Usage: less-to-css-x.js [options] <source> [destination]
+
+Options:
+-h, --help        Show help                                          [boolean]
+-s, --source-map  Produce a sourcemap, optionally you can set a filename
+-m, --minify      Minify the output                                  [boolean]
+-d, --dry-run     Execute but do not write any files                 [boolean]
+-n, --no-fix      Do not perform automated fixes                     [boolean]
+-v, --version     Show version number                                [boolean]
+
+Examples:
+less-to-css-x.js example.less
+less-to-css-x.js example.less eg.css
+less-to-css-x.js --souce-map example.less
+less-to-css-x.js --souce-map=eg.css.map example.less
+
+copyright 2019
 ```
 
 **Example**
 
 Webstorm
 
-![Alt text](images/image1.png?raw=true "Title")
-![Alt text](images/image2.png?raw=true "Title")
+![Alt text](images/image1.png?raw=true 'Title')
+![Alt text](images/image2.png?raw=true 'Title')
+
+Once up and running you will probably want to change 'show console' to 'On error'.

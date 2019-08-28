@@ -36,7 +36,10 @@ module.exports = {
   /**
    * @type {Array}
    */
-  plugins: ['stylelint-prettier'],
+  plugins: [
+    'stylelint-prettier',
+    'stylelint-no-unsupported-browser-features',
+  ],
 
   /**
    * @type {Array}
