@@ -24,12 +24,6 @@
   alt="npm version" height="18">
 </a>
 <a
-  href="https://www.jsdelivr.com/package/npm/less-to-css-x"
-  title="jsDelivr hits">
-<img src="https://data.jsdelivr.com/v1/package/npm/less-to-css-x/badge?style=rounded"
-  alt="jsDelivr hits" height="18">
-</a>
-<a
   href="https://bettercodehub.com/results/Xotic750/less-to-css-x"
   title="bettercodehub score">
 <img src="https://bettercodehub.com/edge/badge/Xotic750/less-to-css-x?branch=master"
@@ -107,4 +101,4 @@ Webstorm
 ![Alt text](images/image1.png?raw=true 'Title')
 ![Alt text](images/image2.png?raw=true 'Title')
 
-Once up and running you will probably want to change 'show console' to 'On error'.
+Once up and running you will probably want to change 'Show console' to 'On error'.
